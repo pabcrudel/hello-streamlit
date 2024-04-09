@@ -53,3 +53,9 @@ That's my first approach to a Data App so I'm following the examples of the
     ```bash
     streamlit run .\app.py 
     ```
+
+## Bugs or suggestions
+
+If you found a bug or have a suggestion please don't hesitate to contact me or
+open an
+[issue on GitHub](https://github.com/pablocru/hello-streamlit/issues).
