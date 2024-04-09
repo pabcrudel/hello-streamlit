@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Creates an `h1`
-st.title("Hello world")
+st.title("Hello Streamlit")
 
 # Defines a table
 df = pd.DataFrame({
