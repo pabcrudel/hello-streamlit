@@ -30,3 +30,32 @@ dataframe = pd.DataFrame(
     columns=('col %d' % i for i in range(8)))
 
 st.dataframe(dataframe.style.highlight_max(axis=0))
+
+"""
+## Charts
+
+### Line chart
+"""
+
+# Render another random chart.
+# `randn()` generates an array of one or more dimensions. In this case, this
+# will be a chart with 20 rows and 3 columns. Each column, or each line, will
+# have a name that identifies it.
+chart_data = pd.DataFrame(
+    np.random.randn(20, 3),
+    columns=['a', 'b', 'c'])
+
+st.line_chart(chart_data)
+
+"""
+### Maps
+"""
+
+# This chart renders a matrix of random numbers in a two-dimensional map.
+# Reduces the dispersion of this points by dividing them by [50, 50].
+# Then moves the generated points to the coordinates of San Francisco.
+map_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+    columns=['lat', 'lon'])
+
+st.map(map_data)
