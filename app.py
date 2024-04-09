@@ -7,8 +7,8 @@ st.title("Hello world")
 
 # Defines a table
 df = pd.DataFrame({
-  'City': ["Valencia", "Malaga"],
-  'Population': [791.413, 571.026]
+    'City': ["Valencia", "Malaga"],
+    'Population': [791.413, 571.026]
 })
 
 # Renders content without using Streamlit's functions
