@@ -1,0 +1,13 @@
+# Git
+.git*
+
+# Virtual Environments
+*venv*
+
+# Docker
+Dockerfile
+.dockerignore
+docker-build.sh
+
+# Custom
+README.md
