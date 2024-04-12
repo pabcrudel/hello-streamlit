@@ -19,4 +19,8 @@ EXPOSE 8501
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # Configure this container as a executable that starts the Streamlit web server
-ENTRYPOINT streamlit run app.py
+# - Set server address to 0.0.0.0 to run app in production mode in order to
+#   remove the development toolbar
+ENTRYPOINT\
+  streamlit run app.py\
+  --server.address=0.0.0.0
