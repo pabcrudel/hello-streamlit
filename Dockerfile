@@ -9,13 +9,13 @@ WORKDIR /app
 # Copy the local directory to the WORKDIR
 COPY . .
 
-# Install dependecies
+# Install dependencies
 RUN pip3 install -r requirements.txt
 
 # Open the Streamlit’s default port
 EXPOSE 8501
 
-# Test if the project is runing
+# Test if the project is running
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # Configure this container as a executable that starts the Streamlit web server
