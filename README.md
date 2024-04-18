@@ -51,7 +51,7 @@ That's my first approach to a Data App so I'm following the examples of the
 1. Run the web server
 
     ```bash
-    streamlit run .\app.py 
+    streamlit run src/Hello_Streamlit.py
     ```
 
 ## Bugs or suggestions
