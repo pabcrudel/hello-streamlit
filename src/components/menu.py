@@ -4,15 +4,19 @@ entryFile = "app.py"
 
 
 class PageLink:
-    def __init__(self, page, label):
+    def __init__(self, page: str, label: str = None):
         self.page = "pages/" + page + ".py"
-        self.label = label
+
+        if label is None:
+            self.label = page[0].upper() + page[1:]
+        else:
+            self.label = label
 
 
 pageLinks = [
-    PageLink("tables", "Table"),
-    PageLink("charts", "Charts"),
-    PageLink("maps", "Maps")
+    PageLink("tables"),
+    PageLink("charts"),
+    PageLink("maps")
 ]
 
 
