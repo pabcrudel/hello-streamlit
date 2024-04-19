@@ -20,7 +20,14 @@ pageLinks = [
 ]
 
 
+def common_menu():
+    # Top heading of the menu
+    st.sidebar.write("### Hello Streamlit")
+
+
 def authenticated_menu():
+    common_menu()
+
     # Show a navigation menu for authenticated users
     st.sidebar.page_link(entryFile, label="Switch accounts")
 
@@ -30,6 +37,8 @@ def authenticated_menu():
 
 
 def unauthenticated_menu():
+    common_menu()
+
     # Show a navigation menu for unauthenticated users
     st.sidebar.page_link(entryFile, label="Log in")
 
