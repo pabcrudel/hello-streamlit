@@ -12,5 +12,5 @@ docker-build.sh
 # Python
 __pycache__
 
-# Custom
+# Custom files
 README.md
