@@ -55,7 +55,7 @@ That's my first approach to a Data App so I'm following the examples of the
 
     cd src
 
-    streamlit run Hello_Streamlit.py
+    streamlit run app.py
     ```
 
 ## Bugs or suggestions

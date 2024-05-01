@@ -21,4 +21,4 @@ HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # Configure this container as a executable that starts the Streamlit web server
 # - Set Toolbar Mode to Viewer to ensure the development toolbar is hidden
-ENTRYPOINT streamlit run Hello_Streamlit.py --client.toolbarMode=viewer
+ENTRYPOINT streamlit run app.py --client.toolbarMode=viewer
