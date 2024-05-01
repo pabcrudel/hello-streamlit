@@ -1,29 +1,14 @@
 import streamlit as st
-from components.menu import menu
+from components.page_config import page_config
 
-# Initialize st.session_state.role to None
-if "role" not in st.session_state:
-    st.session_state.role = None
-
-# Retrieve the role from Session State to initialize the widget
-st.session_state._role = st.session_state.role
-
-
-def save_role():
-    # Callback function to save the role selection to Session State
-    st.session_state.role = st.session_state._role
-
-
-# Selectbox to choose role
-st.selectbox(
-    "Select your role:",
-    [None, "User"],
-    key="_role",
-    on_change=save_role,
-)
-
-# Render the sidebar menu
-menu()
+page_config()
 
 # Creates an `h1`
 st.title("Hello Streamlit")
+
+# Dummy login
+login_button = st.button("Login")
+if login_button:
+    st.session_state["auth_user"] = "example@example.com"
+    st.session_state["auth_token"] = "dummy-token"
+    st.switch_page("pages/dashboard.py")
