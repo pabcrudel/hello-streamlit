@@ -16,6 +16,9 @@ def get_selection(df: pd.DataFrame, df_columns: List[str]):
                 tab_selections = {}
 
                 for item in filtered_df[df_column].unique().tolist():
+                    if item is None:
+                        item = "Unknown"
+
                     tab_selections[item] = st.toggle(item, True)
 
                 selections[df_column] = tab_selections
@@ -26,7 +29,8 @@ def get_selection(df: pd.DataFrame, df_columns: List[str]):
 def filter_selection(df: pd.DataFrame, selections: dict):
     for column, values in selections.items():
         selected_values = [
-            value for value, selected in values.items() if selected
+            None if value == "Unknown" else value
+            for value, selected in values.items() if selected
         ]
         df = df[df[column].isin(selected_values)]
     return df
