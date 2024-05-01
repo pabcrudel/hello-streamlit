@@ -1,4 +1,5 @@
 import streamlit as st
+from typing import List
 
 entryFile = "app.py"
 
@@ -13,48 +14,53 @@ class PageLink:
             self.label = label
 
 
-pageLinks = [
+class SectionLink:
+    def __init__(self, name: str, pages: List[PageLink]):
+        self.name = name
+        self.pages = pages
+
+
+navigationItems = [
     PageLink("tables"),
     PageLink("charts"),
     PageLink("maps")
 ]
 
 
-def common_menu():
+def authenticated_menu():
+    # Show a navigation menu for authenticated users
     # Top heading of the menu
     st.sidebar.write("### Hello Streamlit")
 
+    def logout():
+        del st.session_state["auth_user"]
+        del st.session_state["auth_token"]
 
-def authenticated_menu():
-    common_menu()
+    # Create a button that handles logout
+    st.sidebar.button("Logout", on_click=logout)
 
-    # Show a navigation menu for authenticated users
-    st.sidebar.page_link(entryFile, label="Switch accounts")
+    st.sidebar.divider()
 
     # Display links to each page
-    for pageLink in pageLinks:
-        st.sidebar.page_link(pageLink.page, label=pageLink.label)
+    for navigationItem in navigationItems:
+        if isinstance(navigationItem, PageLink):
+            st.sidebar.container(border=True).page_link(
+                navigationItem.page,
+                label=navigationItem.label,
+            )
+        elif isinstance(navigationItem, SectionLink):
+            expander = st.sidebar.expander(navigationItem.name)
+            for pageLink in navigationItem.pages:
+                expander.page_link(
+                    pageLink.page,
+                    label=pageLink.label
+                )
 
 
-def unauthenticated_menu():
-    common_menu()
-
-    # Show a navigation menu for unauthenticated users
-    st.sidebar.page_link(entryFile, label="Log in")
-
-
-def menu():
-    # Determine if a user is logged in or not, then show the correct
-    # navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
-        unauthenticated_menu()
-        return
-    authenticated_menu()
-
-
-def menu_with_redirect():
+def main_sidebar():
     # Redirect users to the main page if not logged in, otherwise continue to
     # render the navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
+    if "auth_token" not in st.session_state:
         st.switch_page(entryFile)
-    menu()
+    else:
+        authenticated_menu()
