@@ -1,12 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from components.menu import menu_with_redirect
+from components.header import main_header
 
-menu_with_redirect()
-
-# Creates an `h1`
-st.title("Tables")
+main_header("Tables")
 
 # Defines a table
 df = pd.DataFrame({

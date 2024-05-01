@@ -1,13 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from components.menu import menu_with_redirect
+from components.header import main_header
 
-menu_with_redirect()
-
-"""
-# Maps
-"""
+main_header("Maps")
 
 # This chart renders a matrix of random numbers in a two-dimensional map.
 # Reduces the dispersion of this points by dividing them by [50, 50].

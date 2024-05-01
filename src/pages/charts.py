@@ -1,14 +1,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from components.menu import menu_with_redirect
+from components.header import main_header
 
-menu_with_redirect()
+main_header("Charts")
 
 """
-## Charts
-
-### Line chart
+## Line chart
 """
 
 # Render another random chart.
