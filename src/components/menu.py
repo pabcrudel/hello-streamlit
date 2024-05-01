@@ -23,7 +23,8 @@ class SectionLink:
 navigationItems = [
     PageLink("tables"),
     PageLink("charts"),
-    PageLink("maps")
+    PageLink("maps"),
+    PageLink("dataframe")
 ]
 
 
