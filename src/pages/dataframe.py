@@ -37,3 +37,25 @@ st.dataframe(filtered_df, use_container_width=True)
 st.subheader("Genre distribution by city")
 gender_city_counts = filtered_df.groupby(['city', 'gender']).size().unstack()
 st.bar_chart(gender_city_counts)
+
+
+def print_error_name():
+    df = pd.DataFrame({
+        'event_name': ['Ev1', 'Ev2', 'Ev3', 'Ev4', None],
+        'validation_A': [True, False, False, None, None],
+        'validation_B': [False, True, False, None, None]
+    })
+
+    df['error_name'] = df.apply(
+        (
+            lambda row: row['event_name']
+            if not (row['validation_A'] or row['validation_B'])
+            else None
+        ),
+        axis=1
+    )
+
+    st.dataframe(df)
+
+
+print_error_name()
