@@ -47,6 +47,8 @@ def print_bar_chart():
 
 
 def print_error_name():
+    st.subheader("Add a error name if there is one")
+
     df = pd.DataFrame({
         'event_name': ['Ev1', 'Ev2', 'Ev3', 'Ev4', None],
         'validation_A': [True, False, False, None, None],
