@@ -34,9 +34,16 @@ selections = get_selection(og_df, ["job", "education"])
 filtered_df = filter_selection(og_df, selections)
 st.dataframe(filtered_df, use_container_width=True)
 
-st.subheader("Genre distribution by city")
-gender_city_counts = filtered_df.groupby(['city', 'gender']).size().unstack()
-st.bar_chart(gender_city_counts)
+
+def print_bar_chart():
+    st.subheader("Genre distribution by city")
+    gender_city_counts = (
+        filtered_df
+        .groupby(['city', 'gender'])
+        .size()
+        .unstack()
+    )
+    st.bar_chart(gender_city_counts)
 
 
 def print_error_name():
@@ -58,4 +65,5 @@ def print_error_name():
     st.dataframe(df)
 
 
+print_bar_chart()
 print_error_name()
